@@ -15,3 +15,6 @@ npm i -g ntl
 
 ## listar scripts no terminal
 ntl
+
+## executar codigo da classe Person
+node --watch person.js
