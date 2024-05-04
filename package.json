@@ -6,6 +6,7 @@
   "scripts": {
     "start:mock": "node --watch src/mock-concept/person.js",
     "start:stub": "node --watch src/stub-concept/index.js",
+    "start:fake-timers": "node --watch src/fake-timers/index.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --injectGlobals false --runInBand test/",
     "test:dev": "NODE_OPTIONS=--experimental-vm-modules npx jest --injectGlobals false --runInBand --watchAll test/",
     "test:debug": "node --experimental-vm-modules --inspect-brk node_modules/.bin/jest --injectGlobals false --runInBand test/"
