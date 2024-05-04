@@ -29,6 +29,7 @@ class Person {
   }
 }
 
+Person.process({ name: "Nat Pavan", cpf: "123.456.789-00" });
 // Person.process({ name: "Nat", cpf: "123.456.789-00" });
 // Person.process({ cpf: "123.456.789-00" });
 
