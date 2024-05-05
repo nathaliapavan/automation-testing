@@ -1,4 +1,11 @@
-import { describe, it, expect, beforeEach, jest } from "@jest/globals";
+import {
+  describe,
+  it,
+  expect,
+  beforeEach,
+  afterEach,
+  jest,
+} from "@jest/globals";
 import Task from "../../src/fake-timers/task.js";
 import { setTimeout } from "node:timers/promises";
 
@@ -9,6 +16,10 @@ describe("Task Test Suite", () => {
   beforeEach(() => {
     _logMock = jest.spyOn(console, console.log.name).mockImplementation();
     _task = new Task();
+  });
+
+  afterEach(() => {
+    _logMock.mockRestore();
   });
 
   it.skip("should only run tasks that are due without fake timers (slow)", async () => {
@@ -69,5 +80,12 @@ describe("Task Test Suite", () => {
     expect(tasks.at(1).fn).toHaveBeenCalled();
 
     jest.useRealTimers();
+  });
+
+  it("run method should stop when all tasks are finished", async () => {
+    jest.useFakeTimers();
+    _task.run(100);
+    jest.advanceTimersByTime(1000); // 1s
+    expect(console.log).toHaveBeenCalledWith("tasks finished!");
   });
 });
